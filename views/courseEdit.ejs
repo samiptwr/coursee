@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Edit Course - Coursee Platform">
+  <meta name="theme-color" content="#000000">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/courseUpload.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Edit Course - Coursee</title>
+</head>
+<body>
+  <nav>
+    <div class="logo">
+      <a href="/">Coursee</a>
+    </div>
+    <div class="links">
+      <span><a href="/courses">Courses</a></span>
+      <span><a href="/policy">Policy</a></span>
+      <span><a href="/dashboard/<%= user.id %>"><i class="fa-solid fa-user"></i></a></span>
+    </div>
+  </nav>
+  <%- include('./essentials/message') %>
+  <section> 
+    <h2 id="uploadCourse">Edit Course</h2>
+    <div class="upload-form">
+      <form action="/edit/<%= courseDetail._id %>" method="post" enctype="multipart/form-data">
+        <label for="title">Title:</label>
+        <input type="text" name="title" id="title" value="<%= courseDetail.title %>">
+        <label for="genre">Genre: </label>
+        <input type="text" name="genre" id="genre" value="<%= courseDetail.genre %>">
+        <label for="pricing">Pricing:</label>
+        <input type="number" name="pricing" id="pricing" value="<%= courseDetail.price %>">
+        <label for="description">Description:</label>
+        <textarea name="description" id="description"><%= courseDetail.description %></textarea>
+        <label for="description">About the Writer:</label>
+        <textarea name="aboutWriter" id="description"><%= courseDetail.aboutWriter %></textarea>
+        <label for="upload-area">Upload Video here:</label>
+        <input type="file" accept="video/*" name="uploadedFile" id="upload-area">
+        <label for="thumbnail">Thumbnail:</label>
+        <input type="file" accept="image/*" name="thumbnailImg" id="thumbnail">
+        <input type="submit" value="Edit">
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <span>Copyright &copy; 2025 || All rights reserved by coursee</span>
+    <span>By Samip Tiwari</span>
+  </footer>
+  <%- include('./essentials/messagejs') %>
+</body>
+</html>

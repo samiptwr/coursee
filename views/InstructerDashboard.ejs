@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Instructor Dashboard - Coursee Platform">
+  <meta name="theme-color" content="#000000">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/instructorDash.css">
+  <link rel="stylesheet" href="../css/userDash.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Instructor Dashboard - Coursee</title>
+</head>
+
+<body> 
+  <nav>
+    <div class="logo">
+      <a href="/">Coursee</a>
+    </div>
+    <div class="links">
+      <span><a href="/courses">Courses</a></span>
+      <span><a href="/policy">Policy</a></span>
+      <span><a href="/dashboard/<%= user.id %>"><i class="fa-solid fa-user"></i></a></span>
+    </div>
+  </nav>
+  <%- include('./essentials/message') %>
+  <section>
+    <div class="name-display">
+      <h1>Hi, <%= user.name %>!!</h1>
+    </div>
+    <div class="container">
+      <div class="your-courses">
+        <div class="upload-section">
+          <h3>Your Courses</h3>
+          <a href="/upload" id="upload-btn"><i class="fa-solid fa-plus"></i>Upload</a>
+        </div>
+        <div class="cards">
+          <% userInfo.uploadedCourses.forEach(course => { %>
+            <div class="card">
+              <img src="<%= course.thumbnailPath %>" id="thumbnail">
+              <hr>
+              <span id="title"><%= course.title %></span>
+              <div class="author">
+                <i class="fa-solid fa-user"></i>
+                <span><%= course.uploadedUser.name %></span>
+              </div>
+              <span id="genre"><%= course.genre %></span>
+              <span id="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star-half-stroke"></i>(5.9k)</span>
+              <a href="/edit/<%= course._id %>" style="color: black;">Edit</a>
+            </div> 
+          <% }) %>
+        </div>
+      </div>
+
+      <div class="stats-container">
+        <h2 style="margin: 20px; text-decoration: underline;" align="center">Stats</h2>
+        <div class="stats">
+          <div class="total-courses hiro">
+            <h3>Total Courses</h3>
+            <span><%= userInfo.totalCourses %></span>
+          </div>
+          <div class="purchases hiro">
+            <h3>Total Purchases</h3>
+            <span><%= userInfo.totalPurchases %></span>
+          </div>
+          <div class="revenue hiro">
+            <h3>Total Revenue</h3>
+            <span>$ <%= userInfo.totalRevenue %></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <a href="/logout/<%= user.id %>" id="logout">Logout</a>
+
+  <footer>
+    <span>Copyright &copy; 2025 || All rights reserved by coursee</span>
+    <span>By Samip Tiwari</span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.titleOfCourse').forEach((e) => {
+      const fullText = e.textContent.trim()
+      const maxLength = 25
+
+      if (fullText <= maxLength) return
+
+      const visibleText = fullText.slice(0, maxLength)
+
+      e.innerHTML = `
+        ${visibleText}<span>...</span>
+      `
+    })
+  </script>
+  <%- include('./essentials/messagejs') %>
+</body>
+
+</html>

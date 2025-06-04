@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse Courses - Coursee Platform">
+  <meta name="theme-color" content="#000000">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/coursesLists.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Coursee || Best Platform to find Best Courses</title>
+</head>
+<body>
+  <nav>
+    <div class="logo">
+      <a href="/">Coursee</a>
+    </div>
+    <div class="links">
+      <span><a href="/courses">Courses</a></span>
+      <span><a href="/policy">Policy</a></span>
+      <span><a href="/dashboard/<%= user.id %>"><i class="fa-solid fa-user"></i></a></span>
+    </div>
+  </nav>
+
+  <%- include('./essentials/message') %>
+
+  <section>
+    <div class="search-utils">
+      <input type="text" id="searchInput" placeholder="Search courses or instructors....">
+      <button class="search-btn" onclick="searchQuery()"><i class="fa-solid fa-search"></i></button>
+    </div>
+
+    <div class="top-searches">
+      <h3>Top Searches</h3>
+      <div class="mini-cards">
+        <% if (courses) { %>
+         <% courses.forEach(course => { %>
+          <div class="mini-card">
+            <div class="details">
+              <img src="<%= course.thumbnailPath %>" id="thumbnail">
+              <div class="more-details">
+                <span id="title"><%= course.title %></span>
+                <div class="author">
+                  <i class="fa-solid fa-user"></i>
+                  <span id="author"><%= course.uploadedUser.name %></span>
+                </div>
+                <span id="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>(4.2k)</span>
+                <span id="genre"><%= course.genre %></span>
+              </div>
+            </div>
+            <a href="/course/<%= course._id %>" id="visit-btn">Visit</a>
+          </div>
+         <% }) %>
+        <% } %>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    async function searchQuery(){
+      const query = document.querySelector('#searchInput').value
+      if(!query){
+        return
+      }
+      const res = await fetch(`/courses/search?q=${encodeURIComponent(query)}`)
+      const details = await res.json()
+      
+      if(!details) return
+
+      const displayList = document.querySelector('.mini-cards')
+      displayList.innerHTML = ''
+      details.forEach(detail => {
+        displayList.innerHTML = `
+          <div class="mini-card">
+            <div class="details">
+              <img src="${detail.thumbnailPath}" id="thumbnail">
+              <div class="more-details">
+                <span id="title">${detail.title}</span>
+                <div class="author">
+                  <i class="fa-solid fa-user"></i>
+                  <span id="author">${detail.uploadedUser.name}</span>
+                </div>
+                <span id="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>(4.2k)</span>
+                <span id="genre">${detail.genre}</span>
+              </div>
+            </div>
+            <a href="/course/${detail._id}" id="visit-btn">Visit</a>
+          </div>
+        `
+      });
+    }
+
+  </script>
+
+  <footer>
+    <span>Copyright &copy; 2025 || All rights reserved by coursee</span>
+    <span>By Samip Tiwari</span>
+  </footer>
+  <%- include('./essentials/messagejs') %>
+</body>
+</html>

@@ -1,0 +1,132 @@
+section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.short-info{
+  background-color: whitesmoke;
+  margin: 20px;
+  padding: 50px;
+  width: 50%;
+  border-radius: 10px;
+}
+
+.short-info h3{
+  margin: 10px 0;
+}
+
+#thumbImg{
+  border: 2px solid white;
+  border-radius: 10px;
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+
+.author{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-top: 10px;
+}
+
+.author i{
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+#title{
+  font-weight: bold;
+}
+
+.some-info{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+#genre{
+  text-decoration: underline;
+}
+
+#pricing{
+  font-weight: bold;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 3px 7px;
+}
+
+#rating{
+  color: rgb(21, 0, 255);
+}
+
+#buyNow-btn{
+  text-decoration: none;
+  background-color: lime;
+  width: 100%;
+  padding: 5px 10px;
+  margin: 10px 0 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.description{
+  margin: 20px 0;
+}
+
+.keypoints{
+  margin: 20px 0;
+}
+
+.ratings{
+  width: 50%;
+}
+
+.ratings h3{
+  margin: 10px 0;
+}
+
+.comments{
+  background-color: whitesmoke;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  margin: 10px 0;
+}
+
+.commenter{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 20px;
+  margin: 10px 10px 0 10px;
+}
+
+.commenter img{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+#givenRating{
+  color: blue;
+  margin-left: 10px;
+}
+
+#commentMessage{
+  margin: 0 20px 10px 20px;
+  padding: 0 10px;
+}
+
+.read-more-btn{
+  color: blue;
+  cursor: pointer;
+  display: inline-block;
+}

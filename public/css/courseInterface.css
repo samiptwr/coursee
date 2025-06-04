@@ -1,0 +1,34 @@
+section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.courseLayout{
+  background-color: whitesmoke;
+  padding: 20px;
+  margin: 20px;
+  width: 50%;
+  border-radius: 10px;
+}
+
+.courseLayout video{
+  width: 100%;
+  border-radius: 10px;
+}
+
+#title{
+  margin: 5px 0;
+}
+
+#author{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+#author i{
+  border-radius: 50%;
+  margin-right: 5px;
+}

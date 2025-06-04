@@ -1,0 +1,140 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.your-courses{
+  background-color: whitesmoke;
+  border-radius: 10px;
+  margin: 10px 20px;
+  padding: 10px;
+  width: 80%;
+}
+
+.your-courses h3{
+  margin: 10px;
+}
+
+.cards{
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px;
+  gap: 10px;
+}
+
+.cards::-webkit-scrollbar-track{
+  background-color: #f1f1f1;
+  border-radius: 10px;
+}
+
+.cards::-webkit-scrollbar-thumb{
+  background-color: #888;
+  border-radius: 10px;
+}
+
+.card{
+  flex: 0 0 auto;
+  width: 250px;
+  height: 400px;
+  display: flex;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.card #thumbnail{
+  width: 100%;
+}
+
+
+.card #title{
+  margin: 5px;
+  font-weight: bold;
+}
+
+.author{
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+  margin: 5px;
+}
+
+.author i{
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+#genre{
+  text-decoration: underline;
+  margin: 5px 5px 15px 5px;
+}
+
+#rating{
+  margin: 10px;
+  color: yellow;
+}
+
+.card a{
+  padding: 5px;
+  width: 100%;
+  background-color: lime;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.name-display{
+  margin: 10px 0 10px 10vw;
+}
+
+.name-display h1{
+  text-decoration: underline;
+  font-size: xx-larger;
+}
+
+.purchase-history{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  padding: 20px;
+}
+
+table{
+  width: 100%;
+  border: 3px solid black;
+  border-radius: 10px;
+  border-collapse: collapse;
+  margin: 20px;
+}
+
+th{
+  border: 5px solid black;
+}
+
+td, th{
+  text-align: center;
+  border: 2px solid black;
+  padding: 5px 10px;
+}
+
+#logout{
+  background-color: blue;
+  color: white;
+  padding: 8px 16px !important;
+  margin: 10px !important;
+  border: 0 !important;
+  outline: 0 !important;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+}

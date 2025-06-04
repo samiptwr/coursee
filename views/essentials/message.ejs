@@ -1,0 +1,8 @@
+<% if (message) { %>
+  <div class="<%= message.type %> message">
+    <span>
+      <%= message.message %>
+    </span>
+    <span><i class="fa-solid fa-xmark" id="close-btn"></i></span>
+  </div>
+<% } %>

@@ -1,0 +1,146 @@
+
+.intro{
+  margin: 20px 20px 50px 20px;
+}
+
+.most-popular, .top-rated, .recommended{
+  background-color: whitesmoke;
+  border-radius: 10px;
+  margin: 10px 20px;
+  padding: 10px;
+}
+
+.most-popular h3, .top-rated h3, .recommended h3{
+  margin: 10px;
+}
+
+.cards{
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px;
+  gap: 10px;
+}
+
+.cards::-webkit-scrollbar-track{
+  background-color: #f1f1f1;
+  border-radius: 10px;
+}
+
+.cards::-webkit-scrollbar-thumb{
+  background-color: #888;
+  border-radius: 10px;
+}
+
+.card{
+  flex: 0 0 auto;
+  width: 250px;
+  height: 400px;
+  display: flex;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.card #thumbnail{
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+
+hr{
+  width: 100%;
+  height: 2px;
+  background-color: white;
+}
+
+.card #title{
+  margin: 5px;
+  font-weight: bold;
+}
+
+.author{
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+  margin: 5px;
+}
+
+.author i{
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+#genre{
+  text-decoration: underline;
+  margin: 5px 5px 15px 5px;
+}
+
+#rating{
+  margin: 10px;
+  color: yellow;
+}
+
+.card a{
+  padding: 5px;
+  width: 100%;
+  background-color: lime;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+}
+
+#view-more{
+  background-color: blue;
+  color: white;
+  padding: 10px;
+  margin: 20px;
+  margin-top: 50px;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+
+.checkout-section {
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+}
+
+.checkout-card {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.checkout-card img {
+  width: 200px;
+  border-radius: 8px;
+}
+
+.checkout-card .details {
+  flex-grow: 1;
+}
+
+.checkout-form input {
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.checkout-form button {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

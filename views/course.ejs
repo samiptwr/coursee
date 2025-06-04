@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Course Details - Coursee Platform">
+  <meta name="theme-color" content="#000000">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/course.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Course Details - Coursee</title>
+</head>
+<body>
+  <nav>
+    <div class="logo">
+      <a href="/">Coursee</a>
+    </div>
+    <div class="links">
+      <span><a href="/courses">Courses</a></span>
+      <span><a href="/policy">Policy</a></span>
+      <span><a href="/dashboard/<%= user.id %>"><i class="fa-solid fa-user"></i></a></span>
+    </div>
+  </nav>
+  <%- include('./essentials/message') %>
+  <section>
+    <div class="short-info">
+      <h3>Course Details</h3>
+      <div class="thumb-author-title">
+        <img src="<%= course.thumbnailPath %>" id="thumbImg">
+        <span id="title"><%= course.title %></span>
+        <div class="author">
+          <i class="fa-solid fa-user"></i>
+          <span><%= course.uploadedUser.name %></span>
+        </div>
+      </div>
+      <div class="some-info">
+        <span id="genre"><%= course.genre %></span>
+        <span id="pricing">$ <%= course.price %></span>
+      </div>
+      <span id="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><i class="fa-regular fa-star"></i>(44.5k)</span> <br>
+      <a href="/course/checkout/buy/<%= course._id %>" id="buyNow-btn">Buy Now!!</a>
+ 
+      <div class="description">
+        <h3>Description</h3>
+        <p data-max-length="500" class="read-more-text"><%= course.description %></p>  
+      </div>
+
+      <div class="about-writer">
+        <h3>About the Writer</h3>
+        <p data-max-length="500" class="read-more-text"><%= course.aboutWriter %></p>
+      </div>
+    </div>
+
+    <div class="ratings">
+      <h3>Ratings and Opinions</h3>
+      <div class="comments">
+        <div class="commenter">
+          <img src="../img/portfolio piiiiiiiic.jpg">
+          <span>Sharmista</span>
+          <span id="givenRating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></i></span>
+        </div>
+        <span id="commentMessage">This book is really good.</span>
+      </div>
+      <div class="comments">
+        <div class="commenter">
+          <img src="../img/portfolio piiiiiiiic.jpg">
+          <span>Sharmista</span>
+          <span id="givenRating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></i></span>
+        </div>
+        <span id="commentMessage">This book is really good.</span>
+      </div>
+      <div class="comments">
+        <div class="commenter">
+          <img src="../img/portfolio piiiiiiiic.jpg">
+          <span>Sharmista</span>
+          <span id="givenRating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></i></span>
+        </div>
+        <span id="commentMessage">This book is really good.</span>
+      </div>
+    </div>
+  </section>
+  
+  <footer>
+    <span>Copyright &copy; 2025 || All rights reserved by coursee</span>
+    <span>By Samip Tiwari</span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.read-more-text').forEach((e) => {
+      const fullText = e.textContent.trim()
+      const maxLength = 500
+
+      if(fullText.length <= maxLength) return
+    
+      const visibleText = fullText.slice(0, maxLength)
+      const hiddenText = fullText.slice(maxLength)
+
+      e.innerHTML = `
+      ${visibleText} <span class="dots">...</span>
+      <span class="more-text" style="display:none;">${hiddenText}</span>
+      <span class="read-more-btn" onclick="toggleReadMore(this)">Read More</span>
+      `
+    })
+
+    function toggleReadMore(btn){
+      const parent = btn.parentElement
+      const moretext = parent.querySelector('.more-text')
+      const dots = parent.querySelector('.dots')
+
+      if(moretext.style.display === 'none'){
+        moretext.style.display = 'inline'
+        dots.style.display = 'none'
+        btn.textContent = 'Read Less'
+      } else {
+        moretext.style.display = 'none'
+        dots.style.display = 'inline'
+        btn.textContent = 'Read More'
+      }
+    }
+
+  </script>
+  <%- include('./essentials/messagejs') %>
+</body>
+</html>

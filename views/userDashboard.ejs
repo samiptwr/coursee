@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/userDash.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Coursee</title>
+</head>
+
+<body>
+  <nav>
+    <div class="logo">
+      <a href="/">Coursee</a>
+    </div>
+    <div class="links">
+      <span><a href="/courses">Courses</a></span>
+      <span><a href="/policy">Policy</a></span>
+      <span><a href="/dashboard/<%= user.id %>"><i class="fa-solid fa-user"></i></a></span>
+    </div>
+  </nav>
+  <%- include('./essentials/message') %>
+  <section>
+    <div class="name-display">
+      <h1>Hi, <%= user.name %>!!</h1>
+    </div>
+    <div class="container">
+      <div class="your-courses">
+        <h3>Your Courses</h3>
+        <div class="cards">
+          <% userInfo.purchasedCourses.forEach(course => { %>
+            <div class="card">
+              <img src="<%= course.thumbnailPath %>" id="thumbnail">
+              <hr>
+              <span id="title"><%= course.title %></span>
+              <div class="author">
+                <i class="fa-solid fa-user"></i>
+                <span><%= course.uploadedUser.name %></span>
+              </div>
+              <span id="genre"><%= course.genre %></span>
+              <span id="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star-half-stroke"></i>(5.9k)</span>
+              <a href="/watch/<%= course._id %>" style="color: black;">Watch</a>
+            </div>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+
+    <div class="purchase-history">
+      <h3>Purchase History</h3>
+      <table>
+        <tr>
+          <th>Title</th>
+          <th>Price</th>
+          <th>Author</th>
+          <th>Link</th>
+        </tr>
+        <% userInfo.purchasedCourses.forEach(course => { %>
+          <tr>
+            <td class="titleOfCourse"><%= course.title %></td>
+            <td>$ <%= course.price %></td>
+            <td><%= course.uploadedUser.name %></td>
+            <td><a href="/watch/<%= course._id %>" style="color: black;">Click</a></td>
+          </tr>
+        <% }) %>
+      </table> 
+    </div>
+  </section>
+
+  <a href="/logout/<%= user.id %>" id="logout">Logout</a>
+
+  <footer>
+    <span>Copyright &copy; 2025 || All rights reserved by coursee</span>
+    <span>By Samip Tiwari</span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.titleOfCourse').forEach((e) => {
+      const fullText = e.textContent.trim()
+      const maxLength = 25
+
+      if (fullText <= maxLength) return
+
+      const visibleText = fullText.slice(0, maxLength)
+
+      e.innerHTML = `
+        ${visibleText}<span>...</span>
+      `
+    })
+  </script>
+  <%- include('./essentials/messagejs') %>
+</body>
+
+</html>

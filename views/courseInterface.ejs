@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Course Interface - Coursee Platform">
+  <meta name="theme-color" content="#000000">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/courseInterface.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Coursee</title>
+</head>
+<body>
+  <nav>
+    <div class="logo">
+      <a href="/">Coursee</a>
+    </div>
+    <div class="links">
+      <span><a href="/courses">Courses</a></span>
+      <span><a href="/policy">Policy</a></span>
+      <span><a href="/dashboard/<%= user.id %>"><i class="fa-user fa-solid"></i></a></span>
+    </div>
+  </nav>
+  <%- include('./essentials/message') %>
+  <section>
+    <div class="courseLayout">
+      <video src="<%= course.pathVideo %>" controls></video>
+      <h3 id="title"><%= course.title %></h3>
+      <span id="author"><i class="fa-solid fa-user"></i> <%= course.uploadedUser.name %></span>
+    </div>
+  </section>
+
+  <footer>
+    <span>Copyright &copy; 2025 || All rights reserved by coursee</span>
+    <span>By Samip Tiwari</span>
+  </footer>
+
+  <%- include('./essentials/messagejs') %>
+</body>
+</html>

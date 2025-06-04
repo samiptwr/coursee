@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sign up for Coursee - Best Platform for finding Best Courses">
+  <meta name="theme-color" content="#000000">
+  <link rel="stylesheet" href="../css/authPages.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>Sign Up - Coursee</title>
+</head> 
+<body>
+  <%- include('./essentials/message') %>
+  <div class="container">
+    <h2 id="coursee">Coursee</h2>
+    <div class="auth-card">
+      <h3>Signup</h3>
+      <form action="/signup" method="post">
+        <div>
+          <label for="name">Name: </label>
+          <input type="text" name="name" id="name" maxlength="12">
+        </div>
+        <div>
+          <label for="email">Email:</label>
+          <input type="email" name="email" id="email">
+        </div>
+        <div>
+          <label for="password">Password:</label>
+          <input type="password" name="password" id="password" minlength="8" maxlength="12">
+        </div>
+        <div class="role">
+          <label for="role" id="forRole">Role: </label>
+          <select name="role" id="role">
+            <option value="student">Student</option>
+            <option value="instructor">Instructor</option>
+          </select>
+        </div>
+        <a href="/login">Already have an account?</a>
+        <input type="submit" value="SignUp">
+      </form>
+    </div>
+  </div>
+  <%- include('./essentials/messagejs') %>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Coursee - Best Platform for finding Best Courses">
+  <meta name="theme-color" content="#000000">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/home.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Coursee - Best Platform for finding Best Courses</title>
+</head>
+<body>
+  
+  
+  <nav>
+    <div class="logo">
+      <a href="/">Coursee</a>
+    </div>
+    <div class="links">
+      <span><a href="/courses">Courses</a></span>
+      <span><a href="/policy">Policy</a></span>
+      <% if (user && user.role === 'student') { %>
+        <span><a href="/dashboard/<%= user.id  %>"><i class="fa-solid fa-user" style="border-radius: 50%;"></i></a></span>
+      <% } else if(user && user.role === 'instructor') {%>
+        <span><a href="/dashboard/<%= user.id %>"><i class="fa-solid fa-user" style="border-radius: 50%;"></i></a></span>
+      <% } else {%>
+        <span><a href="/login">Login</a></span>
+      <% } %>
+    </div>
+  </nav>
+
+  <%- include('./essentials/message') %>
+
+  <section>
+    <div class="intro">
+      <h2>Coursee</h2>
+      <span>Best Platform to find Best Resources from all over the World.</span>
+    </div>
+    <div class="most-popular">
+      <h3>Most Popular</h3>
+      <div class="cards">
+        <% if (courses) { %>
+          <% courses.forEach(course => { %>
+            <div class="card">
+              <img src="<%= course.thumbnailPath %>" id="thumbnail">
+              <hr>
+              <span id="title"><%= course.title %></span>
+              <div class="author">
+                <i class="fa-solid fa-user"></i>
+                <span><%= course.uploadedUser.name %></span>
+              </div>
+              <span id="genre"><%= course.genre %></span>
+              <span id="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>(5.9k)</span>
+              <a href="/course/<%= course._id %>">Visit</a>
+            </div>
+          <% }) %>
+        <% } %>
+      </div>
+    </div>
+    <div class="top-rated">
+      <h3>Top Rated</h3>
+      <div class="cards">
+        <% if (courses) { %>
+          <% courses.forEach(course => { %>
+            <div class="card">
+              <img src="<%= course.thumbnailPath %>" id="thumbnail">
+              <hr>
+              <span id="title"><%= course.title %></span>
+              <div class="author">
+                <i class="fa-solid fa-user"></i>
+                <span><%= course.uploadedUser.name %></span>
+              </div>
+              <span id="genre"><%= course.genre %></span>
+              <span id="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>(5.9k)</span>
+              <a href="/course/<%= course._id %>">Visit</a>
+            </div>
+          <% }) %>
+        <% } %> 
+      </div>
+    </div>
+    <div class="recommended">
+      <h3>Recommended</h3>
+      <div class="cards">
+        <% if (courses) { %>
+          <% courses.forEach(course => { %>
+            <div class="card">
+              <img src="<%= course.thumbnailPath %>" id="thumbnail">
+              <hr>
+              <span id="title"><%= course.title %></span>
+              <div class="author">
+                <i class="fa-solid fa-user"></i>
+                <span><%= course.uploadedUser.name %></span>
+              </div>
+              <span id="genre"><%= course.genre %></span>
+              <span id="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>(5.9k)</span>
+              <a href="/course/<%= course._id %>">Visit</a>
+            </div>
+          <% }) %>
+        <% } %>
+      </div>
+    </div>
+    <a href="/courses" id="view-more">View More...</a>
+  </section>
+  <footer>
+    <span>Copyright &copy; 2025 || All rights reserved by coursee</span>
+    <span>By Samip Tiwari</span>
+  </footer>
+
+  <script>
+    document.querySelector('#cross-btn').addEventListener('click', () => {
+      document.querySelector('.message').style.display = 'none'
+    })
+  </script>
+  <%- include('./essentials/messagejs') %>
+</body>
+</html>

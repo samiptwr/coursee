@@ -1,0 +1,79 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#coursee{
+  margin: 10px;
+  padding: 10px;
+  text-decoration: underline;
+}
+
+.auth-card{
+  background-color: black;
+  padding: 30px;
+  color: white;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.auth-card h3{
+  font-style: italic;
+}
+
+form{
+  margin: 20px 0;
+}
+
+form div {
+  margin: 10px 0;
+}
+
+form input{
+  outline: 0;
+  border: 0;
+  padding: 4px 6px;
+  border-radius: 10px;
+  width: 100%;
+}
+
+form label {
+  font-size: large;
+  margin-right: 5px;
+}
+
+.role{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form select{
+  outline: 0;
+  border: 0;
+  padding: 3px 6px;
+  border-radius: 10px;
+  flex: 1;
+}
+
+input[type="submit"]{
+  width: 100%;
+  margin-top: 10px;
+  background-color: lime;
+  cursor: pointer;
+  padding: 5px 0;
+  font-size: medium;
+}
+
+form a{
+  color: white;
+}
